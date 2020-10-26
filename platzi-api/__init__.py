@@ -21,8 +21,8 @@ def create_app(test_config=None):
         pass
 
     # Register the BluePrints
-    from . import carreras,cursos
-    app.register_blueprint(carreras.bp)
-    app.register_blueprint(cursos.bp)
+    from . import careers,courses
+    app.register_blueprint(careers.bp)
+    app.register_blueprint(courses.bp)
 
     return app
