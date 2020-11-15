@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api-videos
+    env_file:
+        - .env
+    volumes: 
+      - ".:/usr/src/app"
+    ports:
+      - "5001:5000"
+    expose:
+      - "5001"
