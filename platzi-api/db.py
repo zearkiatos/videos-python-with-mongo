@@ -26,20 +26,19 @@ def collection_stats(collection_nombre):
 
 
 def crear_carrera(json):
-    return str('Falta por implementar')
+    return str(db.careers.insert_one(json).inserted_id)
 
 
 def consultar_carrera_por_id(carrera_id):
-    return str('Falta por implementar')
+    return dumps(db.careers.find_one({'_id': ObjectId(carrera_id)}))
 
 
 def actualizar_carrera(carrera):
-    # Esta funcion solamente actualiza nombre y descripcion de la carrera
-    return str('Falta por implementar')
+    return str(db.careers.update_one({'_id': ObjectId(carrera['_id'])}, {'$set': {'nombre': carrera['nombre'], 'descripcion': carrera['descripcion'] }}).modified_count)
 
 
 def borrar_carrera_por_id(carrera_id):
-    return str('Falta por implementar')
+    return str(db.careers.delete_one({'_id': ObjectId(carrera_id)}))
 
 
 # Clase de operadores
