@@ -12,4 +12,5 @@ services:
       - ".:/usr/src/app"
     ports:
       - "5001:5000"
-    tty: true
+    expose:
+      - "5001"
