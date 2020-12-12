@@ -1,0 +1,5 @@
+FROM mongo:3.6.3
+
+WORKDIR /var/data
+
+EXPOSE 27017
