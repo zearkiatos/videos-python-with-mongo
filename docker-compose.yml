@@ -1,0 +1,38 @@
+version: "3.7"
+
+services:
+  db:
+    env_file:
+      - db.env
+    build:
+      context: .
+      dockerfile: mongo.dockerfile
+    container_name: mongo
+    volumes:
+      - ./data/db:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      mongonetwork:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api-videos
+    env_file:
+        - .env
+    volumes: 
+      - ".:/usr/src/app"
+    ports:
+      - "5001:5000"
+    depends_on: 
+      - db
+    links:
+      - db
+    expose:
+      - "5001"
+    networks:
+      mongonetwork:
+networks:
+  mongonetwork:
+    driver: bridge
